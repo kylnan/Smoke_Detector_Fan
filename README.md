@@ -50,8 +50,6 @@ This project explores how real-time embedded systems can be used for environment
 - [x] RTOS thread prioritization (FreeRTOS)
 - [x] Wireless control via ESP-NOW
 - [x] Web-based monitoring interface
-- [ ] OTA firmware update integration (planned)
-- [ ] Sensor spoofing detection (planned)
 
 ---
 
@@ -71,6 +69,6 @@ This project explores how real-time embedded systems can be used for environment
 
 ---
 
-Here is a rough first build (looks bad I know)
+Here is a rough first build
 
 ![First Build](https://github.com/kylnan/Smoke-Detector-Fan/blob/main/IMG_0898.jpg)
