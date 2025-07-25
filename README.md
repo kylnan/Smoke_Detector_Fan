@@ -66,9 +66,3 @@ This project explores how real-time embedded systems can be used for environment
 
 - [ESP-IDF Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/)
 - [MQ2 Datasheet](https://components101.com/sensors/mq2-gas-sensor)
-
----
-
-Here is a rough first build
-
-![First Build](https://github.com/kylnan/Smoke-Detector-Fan/blob/main/IMG_0898.jpg)
