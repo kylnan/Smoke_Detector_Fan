@@ -1,6 +1,0 @@
-{
-    "idf.portWin": "COM5",
-    "idf.flashType": "UART",
-    "C_Cpp.default.compilerPath": "c:\\Users\\Kyl3Z\\Documents\\Smart_Fan\\main\\CMakeLists.txt",
-    "C_Cpp.errorSquiggles": "disabled"
-}
