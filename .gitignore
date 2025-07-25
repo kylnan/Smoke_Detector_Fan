@@ -20,5 +20,4 @@ pytest_embedded_log/
 # idf-component-manager output
 dependencies.lock
 
-# Visual Studio Code workspace files
-.vscode/
+name.code-workspace
