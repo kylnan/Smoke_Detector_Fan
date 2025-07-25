@@ -13,22 +13,12 @@ gpio_num_t LED_GPIO = GPIO_NUM_5;
 void blink_task(void *pvParameter) {
     gpio_reset_pin(LED_GPIO);
     gpio_set_direction(LED_GPIO, GPIO_MODE_OUTPUT);
-    
-    /* blink loop
-    while(1) {
-        gpio_set_level(LED_GPIO, 1); // Turn LED on
-        vTaskDelay(pdMS_TO_TICKS(500)); // Wait for 500 ms
-        gpio_set_level(LED_GPIO, 0); // Turn LED off
-        vTaskDelay(pdMS_TO_TICKS(30)); // Wait for 500 ms
-    }
 
-    */
-    // fade loop
     ledc_timer_config_t timer = {
             .speed_mode = LEDC_LOW_SPEED_MODE,
             .duty_resolution = LEDC_TIMER_12_BIT,
             .timer_num = LEDC_TIMER_0,
-            .freq_hz = 1000, // Frequency of the PWM signal
+            .freq_hz = 5000, // Frequency of the PWM signal
             .clk_cfg = LEDC_AUTO_CLK
         };
     ledc_channel_config_t channel = { 
@@ -45,28 +35,20 @@ void blink_task(void *pvParameter) {
     ledc_channel_config(&channel);
     
     int duty = 0;
-    int increment = 5;
+    int increment = 64;
+    
     while(1){
         ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, duty);
         ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
         duty += increment;
-        if (duty >= 255 || duty <= 0) {
+        if (duty >= 4095 || duty <= 0) {
             increment = -increment; // Reverse the direction of fading
         }
-        vTaskDelay(pdMS_TO_TICKS(30)); // Wait for the specified delay time
+        vTaskDelay(pdMS_TO_TICKS(10)); // Wait for the specified delay time
     }
 
 }
 
-void normal_mode(void *pvParameter) {
-    // This function can be used to implement a normal mode if needed
-    // Currently, it does nothing
-}
-
-void exhaust_mode(void *pvParameter) {
-    // This function can be used to implement an exhaust mode if needed
-    // Currently, it does nothing
-}
 void app_main() {
-    xTaskCreate(blink_task, "blink_task", 4096, NULL, 1, NULL);
+    xTaskCreate(blink_task, "blink_task", 4096, NULL, 5, NULL);
 }
